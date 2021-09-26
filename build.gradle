@@ -37,6 +37,8 @@ dependencies {
             "org.aeonbits.owner:owner:1.0.12",
             'org.assertj:assertj-core:3.20.2',
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            //add annotation @ValueSource @ParameterizedTest and other
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
             //generate random data with JavaFaker
             'com.github.javafaker:javafaker:1.0.2')
     testRuntimeOnly(
