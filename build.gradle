@@ -1,0 +1,96 @@
+plugins {
+    id 'java-library'
+    id 'io.qameta.allure' version '2.8.1'
+}
+
+repositories {
+    mavenCentral()
+    //maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
+}
+
+def allureVersion = '2.15.0',
+    selenideVersion = '5.24.3',
+    junitVersion = "5.8.0"
+
+allure {
+    version = allureVersion
+    autoconfigure = true
+    aspectjweaver = true
+    configuration = "testImplementation"
+    useJUnit5 {
+        version = allureVersion
+    }
+}
+
+dependencies {
+    implementation(
+            'io.qameta.allure:allure-cucumber6-jvm:2.15.0')
+    testImplementation(
+            'org.aspectj:aspectjweaver:1.9.7',
+            'io.cucumber:cucumber-java:6.11.0',
+            'io.cucumber:cucumber-junit:6.11.0',
+            "org.junit.vintage:junit-vintage-engine:$junitVersion",
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            'io.rest-assured:rest-assured:4.4.0',
+            "io.qameta.allure:allure-rest-assured:$allureVersion",
+            "org.aeonbits.owner:owner:1.0.12",
+            'org.assertj:assertj-core:3.20.2',
+            "org.junit.jupiter:junit-jupiter-api:$junitVersion",
+            //generate random data with JavaFaker
+            'com.github.javafaker:javafaker:1.0.2')
+    testRuntimeOnly(
+            'org.slf4j:slf4j-simple:1.7.32',
+            "org.junit.jupiter:junit-jupiter-engine:$junitVersion")
+}
+
+//tasks.withType(JavaCompile) {
+//    options.encoding = 'UTF-8'
+//    sourceCompatibility = JavaVersion.VERSION_1_8
+//    targetCompatibility = JavaVersion.VERSION_1_8
+//}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+task cucumber() {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = ['--plugin', 'pretty',  \
+                     '--plugin', 'io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm',  \
+                     '--strict', '--glue', 'src/test/resources']
+        }
+    }
+}
+tasks.withType(Test) {
+    systemProperties(System.getProperties())
+    useJUnitPlatform()
+
+    if (System.getProperty("threads") != null) {
+        systemProperties += [
+                'junit.jupiter.execution.parallel.enabled'                 : true,
+                'junit.jupiter.execution.parallel.mode.default'            : 'concurrent',
+                'junit.jupiter.execution.parallel.mode.classes.default'    : 'concurrent',
+                'junit.jupiter.execution.parallel.config.strategy'         : 'fixed',
+                'junit.jupiter.execution.parallel.config.fixed.parallelism': System.getProperty("threads").toInteger()
+        ]
+    }
+
+    testLogging {
+        lifecycle {
+//            events "started", "failed"
+            events "started", "skipped", "failed", "standard_error", "standard_out"
+            exceptionFormat "short"
+        }
+    }
+}
