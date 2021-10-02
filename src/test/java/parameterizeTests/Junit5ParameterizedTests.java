@@ -1,13 +1,13 @@
 package parameterizeTests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EnumSource;
-import org.junit.jupiter.params.provider.ValueSource;
+import org.junit.jupiter.params.provider.*;
 import parameterizeTests.pages.Gender;
 import parameterizeTests.pages.RegistrationForm;
 import simpleStart.pages.components.CalendarComponent;
@@ -28,6 +28,7 @@ public class Junit5ParameterizedTests {
     @ParameterizedTest(name = "Registration test with ValueSource: {0}")
     public void registrationFormTest(String name) {
         Configuration.startMaximized = true;
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationForm
                 .openPage()
                 .enterFirstName(name)
@@ -50,6 +51,7 @@ public class Junit5ParameterizedTests {
     @ParameterizedTest(name = "Registration test with CsvSource: {0}, {1}")
     public void registrationFormTestWithCSVSource(String name, String lastName) {
         Configuration.startMaximized = true;
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationForm
                 .openPage()
                 .enterFirstName(name)
@@ -68,6 +70,7 @@ public class Junit5ParameterizedTests {
     @ParameterizedTest(name = "Registration test with EnumSource: {0}")
     public void registrationFormTestWithEnumSource(Gender gender) {
         Configuration.startMaximized = true;
+        SelenideLogger.addListener("allure", new AllureSelenide());
         registrationForm
                 .openPage()
                 .enterFirstName(testDataWithFaker.firstName)
