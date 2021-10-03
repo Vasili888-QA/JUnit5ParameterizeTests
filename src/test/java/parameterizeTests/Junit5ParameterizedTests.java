@@ -16,7 +16,7 @@ import simpleStart.pages.components.CalendarComponent;
 @Epic("JUnit-5")
 @Feature("Parameterize Tests")
 @DisplayName("JUnit-5 --> Parameterize Tests")
-public class Junit5ParameterizedTests {
+public class Junit5ParameterizedTests extends TestBase {
     RegistrationForm registrationForm = new RegistrationForm();
     TestDataWithFaker testDataWithFaker = new TestDataWithFaker();
     CalendarComponent calendarComponent = new CalendarComponent();
