@@ -71,6 +71,4 @@ public class RegistrationForm {
     public void submitForm() {
         $("#submit").scrollIntoView(true).click();
     }
-
-
 }
