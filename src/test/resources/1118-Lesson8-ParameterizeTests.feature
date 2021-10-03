@@ -21,3 +21,5 @@ Feature: Lesson #8 - Parameterize Tests on Section Practice Form in the DemoQA s
     | Vasili    | QA       | Other  |
     | Pavel     | Dev      | Male   |
     | Tatiana   | PM       | Female |
+ # проблема в логах с языком, в отчете алюра все норм
+ # | ВАСИЛИЙ   | こんにちは | Other  |

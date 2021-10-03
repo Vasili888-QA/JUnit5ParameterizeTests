@@ -6,7 +6,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationForm {
-    private final SelenideElement
+    private  SelenideElement
             firstNameField = $("#firstName"),
             lastNameField = $("#lastName"),
             emailField = $("#userEmail"),
@@ -16,7 +16,8 @@ public class RegistrationForm {
             buttonClose = $x("//button[contains(text(),'Close')]");
     String
             form = "//tr/td[text()='Student Name']/following-sibling::td[contains(text(), '%s')]",
-            radioCheckbox = "//*[contains(text(), '%s')]";
+            radioCheckbox = "//*[contains(text(), '%s')]",
+            radioCheckboxStrict = "//*[text()='%s']";
 
     public RegistrationForm openPage() {
         open("https://demoqa.com/automation-practice-form");
@@ -67,4 +68,14 @@ public class RegistrationForm {
         $x(String.format(radioCheckbox, gender.getGenderOption())).click();
         return this;
     }
+//
+//    public RegistrationForm selectRadioButton(String buttonName) {
+//        $x(String.format(radioCheckboxStrict, buttonName)).click();
+//        return this;
+//    }
+//
+//    public RegistrationForm selectRadioButton1(String buttonName) {
+//        $x(String.format(radioCheckboxStrict, buttonName)).click();
+//        return this;
+//    }
 }

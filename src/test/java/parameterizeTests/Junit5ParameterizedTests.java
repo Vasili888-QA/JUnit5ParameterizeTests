@@ -8,6 +8,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
+import parameterizeTests.helper.TestDataWithFaker;
 import parameterizeTests.pages.Gender;
 import parameterizeTests.pages.RegistrationForm;
 import simpleStart.pages.components.CalendarComponent;
@@ -84,4 +85,37 @@ public class Junit5ParameterizedTests {
                 .checkSubmitFormIsDisplayed(testDataWithFaker.firstName)
                 .clickButtonClose();
     }
+// нужно ещё разобраться
+//    static Stream<Arguments> registrationMethodSource() {
+//        return Stream.of(
+//                Arguments.of(
+//                        "Other", "Music"
+//                ),
+//                Arguments.of(
+//                        "Female", "Reading"
+//                ),
+//                Arguments.of(
+//                        "Male", "Sports"
+//                )
+//        );
+//    }
+//
+//    @MethodSource("registrationMethodSource")
+//    @ParameterizedTest
+//    public void registrationFormTestWithMethodSource(String gender, String hobby) {
+//        Configuration.startMaximized = true;
+//        registrationForm
+//                .openPage()
+//                .enterFirstName(testDataWithFaker.firstName)
+//                .enterLastName(testDataWithFaker.lastName)
+//                .enterEmail(testDataWithFaker.email)
+//                .selectRadioButton(gender)
+//                .enterMobilePhone(testDataWithFaker.mobilePhone)
+//                .selectRadioButton1(hobby);
+//        calendarComponent.setDate("10", "September", "1981");
+//        registrationForm
+//                .setSubjectField(testDataWithFaker.subjects)
+//                .checkSubmitFormIsDisplayed(testDataWithFaker.firstName)
+//                .clickButtonClose();
+//    }
 }
