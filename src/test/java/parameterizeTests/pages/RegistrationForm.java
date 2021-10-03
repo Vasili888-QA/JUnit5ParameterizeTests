@@ -67,4 +67,10 @@ public class RegistrationForm {
         $x(String.format(radioCheckbox, gender.getGenderOption())).click();
         return this;
     }
+
+    public void submitForm() {
+        $("#submit").scrollIntoView(true).click();
+    }
+
+
 }
