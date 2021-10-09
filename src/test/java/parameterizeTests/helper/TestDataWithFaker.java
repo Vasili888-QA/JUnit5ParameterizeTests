@@ -1,4 +1,4 @@
-package parameterizeTests;
+package parameterizeTests.helper;
 
 import com.github.javafaker.Faker;
 

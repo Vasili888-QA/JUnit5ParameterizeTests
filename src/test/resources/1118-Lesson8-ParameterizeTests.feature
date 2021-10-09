@@ -1,4 +1,4 @@
-@Test
+@Lesson8
 Feature: Lesson #8 - Parameterize Tests on Section Practice Form in the DemoQA site
 
   Scenario Outline: Fill Practice Form and submit it with employees "<FirstName>" , "<LastName>" -  "<Gender>"
@@ -21,3 +21,5 @@ Feature: Lesson #8 - Parameterize Tests on Section Practice Form in the DemoQA s
     | Vasili    | QA       | Other  |
     | Pavel     | Dev      | Male   |
     | Tatiana   | PM       | Female |
+ # проблема в логах с языком, в отчете алюра все норм
+ # | ВАСИЛИЙ   | こんにちは | Other  |

@@ -9,8 +9,8 @@ repositories {
 }
 
 def allureVersion = '2.15.0',
-    selenideVersion = '5.24.3',
-    junitVersion = "5.8.0"
+    selenideVersion = '5.24.4',
+    junitVersion = "5.8.1"
 
 allure {
     version = allureVersion
@@ -35,7 +35,7 @@ dependencies {
             'io.rest-assured:rest-assured:4.4.0',
             "io.qameta.allure:allure-rest-assured:$allureVersion",
             "org.aeonbits.owner:owner:1.0.12",
-            'org.assertj:assertj-core:3.20.2',
+            'org.assertj:assertj-core:3.21.0',
             "org.junit.jupiter:junit-jupiter-api:$junitVersion",
             //add annotation @ValueSource @ParameterizedTest and other
             "org.junit.jupiter:junit-jupiter:$junitVersion",
@@ -46,15 +46,15 @@ dependencies {
             "org.junit.jupiter:junit-jupiter-engine:$junitVersion")
 }
 
-//tasks.withType(JavaCompile) {
-//    options.encoding = 'UTF-8'
-//    sourceCompatibility = JavaVersion.VERSION_1_8
-//    targetCompatibility = JavaVersion.VERSION_1_8
-//}
-
-compileTestJava {
+tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+    sourceCompatibility = 11
+    targetCompatibility = 11
 }
+
+//compileTestJava {
+//    options.encoding = 'UTF-8'
+//}
 
 configurations {
     cucumberRuntime {

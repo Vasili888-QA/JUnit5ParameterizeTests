@@ -1,4 +1,4 @@
-@Test
+@Lesson2
 Feature: Lesson #2 - Available action on Section Practice Form in the DemoQA site
 
   Scenario: Fill Practice Form and submit it
