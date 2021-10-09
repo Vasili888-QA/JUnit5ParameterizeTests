@@ -68,6 +68,11 @@ public class RegistrationForm {
         $x(String.format(radioCheckbox, gender.getGenderOption())).click();
         return this;
     }
+
+
+    public void submitForm() {
+        $("#submit").scrollIntoView(true).click();
+    }
 //
 //    public RegistrationForm selectRadioButton(String buttonName) {
 //        $x(String.format(radioCheckboxStrict, buttonName)).click();
@@ -78,4 +83,5 @@ public class RegistrationForm {
 //        $x(String.format(radioCheckboxStrict, buttonName)).click();
 //        return this;
 //    }
+
 }
