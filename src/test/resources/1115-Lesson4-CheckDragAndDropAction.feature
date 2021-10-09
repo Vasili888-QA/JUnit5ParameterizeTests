@@ -1,4 +1,4 @@
-@Test
+@Lesson4
 Feature: Lesson4 -Task3- Check Drag and Drop action on Internet-Herokuapp
 
   Scenario: Check drag and drop with Selenide

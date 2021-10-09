@@ -1,4 +1,4 @@
-@Test
+@Lesson1
 Feature: Feature file #1 with Cucumber - Available action on Elements Section in the DemoQA site
 
   Scenario: Open Elements Section and check elements on the page
