@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 @Epic("JUnit-5")
-@Feature("Parameterize Tests")
+@Feature("Validate Tests")
 public class NegativeTestRegistrationForm extends TestBase {
 
     @Test
