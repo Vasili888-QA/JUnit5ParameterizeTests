@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import parameterizeTests.helper.Attach;
 
+import static parameterizeTests.config.Credentials.credentials;
+
 public class TestBase {
     @BeforeAll
     static void setup() {
@@ -21,6 +23,11 @@ public class TestBase {
         Configuration.startMaximized = true;
         //закомментировать, если нужно запускать локально
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+        //так прячим креды с помощью библиотеки owner и добавляем возможность передавать удалённо URL
+//        String login = credentials.login();
+//        String password = credentials.password();
+//        String url = System.getProperty("remote");
+//        Configuration.remote = String.format("https://%s:%s@%s", login, password, url);
     }
 
     @AfterEach
