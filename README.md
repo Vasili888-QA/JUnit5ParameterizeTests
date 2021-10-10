@@ -35,9 +35,9 @@ ___
 
 Run command on Terminal:
 
-Run All Tests on project -->> _**gradle clean test**_
-Run Tests with @Tag("smoke") -->> _**gradle clean smoke_tests**_
-Run Tests with @Tag("prod" / "regress") -->> _**gradle clean many_tags_tests**_
+- Run All Tests on project -->> _**gradle clean test**_
+- Run Tests with @Tag("smoke") -->> _**gradle clean smoke_tests**_
+- Run Tests with @Tag("prod" / "regress") -->> _**gradle clean many_tags_tests**_
 
 Get allure report with Allure Server
 ![img.png](src/test/resources/images/img.png)
