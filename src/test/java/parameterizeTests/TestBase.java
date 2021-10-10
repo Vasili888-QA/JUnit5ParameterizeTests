@@ -22,12 +22,14 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
         //закомментировать, если нужно запускать локально
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+//        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
+        //так прячим креды с помощью библиотеки owner
+        String login = credentials.login();
+        String password = credentials.password();
+        String url = System.getProperty("remote");
+//        Configuration.remote = String.format("https://%s:%s@selenoid.autotests.cloud/wd/hub/", login, password);
         //так прячим креды с помощью библиотеки owner и добавляем возможность передавать удалённо URL
-//        String login = credentials.login();
-//        String password = credentials.password();
-//        String url = System.getProperty("remote");
-//        Configuration.remote = String.format("https://%s:%s@%s", login, password, url);
+        Configuration.remote = String.format("https://%s:%s@%s", login, password, url);
     }
 
     @AfterEach
