@@ -1,5 +1,6 @@
 package wkulikova;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import parameterizeTests.TestBase;
 import parameterizeTests.pages.RegistrationForm;
@@ -12,6 +13,8 @@ import static com.codeborne.selenide.Selenide.$x;
 public class NegativeTestRegistrationForm extends TestBase {
 
     @Test
+    @Tag("prod")
+    @Tag("smoke")
     public void testSubmitEmptyForm() {
         RegistrationForm registrationForm = new RegistrationForm();
         registrationForm.openPage();

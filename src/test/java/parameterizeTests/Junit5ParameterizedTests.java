@@ -6,6 +6,7 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.*;
 import parameterizeTests.helper.TestDataWithFaker;
@@ -16,6 +17,7 @@ import simpleStart.pages.components.CalendarComponent;
 @Epic("JUnit-5")
 @Feature("Parameterize Tests")
 @DisplayName("JUnit-5 --> Parameterize Tests")
+@Tag("regress")
 public class Junit5ParameterizedTests extends TestBase {
     RegistrationForm registrationForm = new RegistrationForm();
     TestDataWithFaker testDataWithFaker = new TestDataWithFaker();
@@ -27,6 +29,7 @@ public class Junit5ParameterizedTests extends TestBase {
             "Tatiana"
     })
     @ParameterizedTest(name = "Registration test with ValueSource: {0}")
+    @Tag("smoke")
     public void registrationFormTest(String name) {
         Configuration.startMaximized = true;
         SelenideLogger.addListener("allure", new AllureSelenide());

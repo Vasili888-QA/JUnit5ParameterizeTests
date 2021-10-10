@@ -68,13 +68,14 @@ task cucumber() {
         javaexec {
             main = "io.cucumber.core.cli.Main"
             classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = ['--plugin', 'pretty',  \
-                     '--plugin', 'io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm',  \
-                     '--strict', '--glue', 'src/test/resources']
+            args = ['--plugin', 'pretty',   \
+                      '--plugin', 'io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm',   \
+                      '--strict', '--glue', 'src/test/resources']
         }
     }
 }
 tasks.withType(Test) {
+    //данная строчка нужна, чтобы прокидывать из вне переменные. допустим браузер, env.
     systemProperties(System.getProperties())
     useJUnitPlatform()
 
@@ -94,5 +95,19 @@ tasks.withType(Test) {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
+    }
+}
+
+task smoke_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "smoke"
+    }
+}
+
+task many_tags_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "prod"
+        includeTags "regress"
+        excludeTags "smoke"
     }
 }
