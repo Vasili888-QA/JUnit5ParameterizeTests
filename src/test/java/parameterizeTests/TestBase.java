@@ -19,6 +19,7 @@ public class TestBase {
 
         Configuration.browserCapabilities = capabilities;
         Configuration.startMaximized = true;
+        //закомментировать, если нужно запускать локально
         Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
     }
 
