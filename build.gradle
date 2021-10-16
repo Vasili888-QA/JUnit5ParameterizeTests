@@ -113,8 +113,16 @@ task many_tags_tests(type: Test) {
     }
 }
 
-tasks.register('werttests', Test).configure(){
+tasks.register('cucumberTests', Test).configure(){
     filter{
-     includeTestsMatching("simpleStart.runner*")
+        includeTestsMatching("simpleStart.runner*")
+    }
+}
+
+tasks.register('junitTests', Test).configure(){
+    useJUnitPlatform {
+        includeTags "prod"
+        includeTags "regress"
+        excludeTags "smoke"
     }
 }
