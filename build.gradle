@@ -111,3 +111,9 @@ task many_tags_tests(type: Test) {
         excludeTags "smoke"
     }
 }
+
+tasks.register('werttests', Test).configure(){
+    filter{
+        includeTestsMatching("simpleStart.runner*")
+    }
+}
