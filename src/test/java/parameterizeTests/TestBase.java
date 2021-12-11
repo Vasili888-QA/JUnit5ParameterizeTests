@@ -20,7 +20,8 @@ public class TestBase {
         capabilities.setCapability("enableVideo", true);
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.startMaximized = true;
+       // Configuration.startMaximized = true;
+        Configuration.browserSize = "1980x980";
         //раскомментировать, если нужно запускать локально
 //        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub/";
         //так прячим креды с помощью библиотеки owner
@@ -29,7 +30,7 @@ public class TestBase {
         String url = System.getProperty("remote");
 //        Configuration.remote = String.format("https://%s:%s@selenoid.autotests.cloud/wd/hub/", login, password);
         //так прячим креды с помощью библиотеки owner и добавляем возможность передавать удалённо URL
-        Configuration.remote = String.format("https://%s:%s@%s", login, password, url);
+//        Configuration.remote = String.format("https://%s:%s@%s", login, password, url);
     }
 
     @AfterEach

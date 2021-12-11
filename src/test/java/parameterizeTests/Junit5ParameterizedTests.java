@@ -31,7 +31,7 @@ public class Junit5ParameterizedTests extends TestBase {
     @ParameterizedTest(name = "Registration test with ValueSource: {0}")
     @Tag("smoke")
     public void registrationFormTest(String name) {
-        Configuration.startMaximized = true;
+        Configuration.browserSize = "1980x980";
         SelenideLogger.addListener("allure", new AllureSelenide());
         registrationForm
                 .openPage()
@@ -54,7 +54,7 @@ public class Junit5ParameterizedTests extends TestBase {
     }, delimiter = ';')
     @ParameterizedTest(name = "Registration test with CsvSource: {0}, {1}")
     public void registrationFormTestWithCSVSource(String name, String lastName) {
-        Configuration.startMaximized = true;
+        Configuration.browserSize = "1980x980";
         SelenideLogger.addListener("allure", new AllureSelenide());
         registrationForm
                 .openPage()
@@ -73,7 +73,7 @@ public class Junit5ParameterizedTests extends TestBase {
     @EnumSource(Gender.class)
     @ParameterizedTest(name = "Registration test with EnumSource: {0}")
     public void registrationFormTestWithEnumSource(Gender gender) {
-        Configuration.startMaximized = true;
+        Configuration.browserSize = "1980x980";
         SelenideLogger.addListener("allure", new AllureSelenide());
         registrationForm
                 .openPage()
