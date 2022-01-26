@@ -8,6 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources"},
         tags = "@Test or @Story or @Lesson1 or @Lesson2 or @Lesson4 or @Lesson8",
+        //tags = "@Test33",
         glue = {"simpleStart/stepDefinitions"},
         plugin = {"pretty", "io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"})
 public class  RunTests {

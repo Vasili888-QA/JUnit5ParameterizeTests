@@ -5,26 +5,27 @@ plugins {
 
 repositories {
     mavenCentral()
-    //maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
 }
 
-def allureVersion = '2.16.1',
+def allureVersion = '2.17.2',
     selenideVersion = '6.1.1',
     junitVersion = "5.8.2"
 
 allure {
     version = allureVersion
-    autoconfigure = true
+    autoconfigure = false
     aspectjweaver = true
     configuration = "testImplementation"
-    useJUnit5 {
-        version = allureVersion
-    }
+//    configurations.all {
+//        exclude(group = "io.qameta.allure", module = "allure-junit4")
+//        exclude(group = "io.qameta.allure", module = "allure-junit4-aspect")
+//        exclude(group = "io.qameta.allure", module = "allure-junit5")
+//        exclude(group = "io.qameta.allure", module = "allure-junit-platform")
+//    }
 }
-
 dependencies {
     implementation(
-            'io.qameta.allure:allure-cucumber6-jvm:$allureVersion')
+            'io.qameta.allure:allure-cucumber6-jvm:2.17.2')
     testImplementation(
             'org.aspectj:aspectjweaver:1.9.7',
             'io.cucumber:cucumber-java:6.11.0',
