@@ -14,6 +14,13 @@ def allureVersion = '2.17.2',
 
 allure {
     version.set("2.17.2")
+    adapter {
+        frameworks {
+            junit5 {
+                enabled.set(false)
+            }
+        }
+    }
 }
 
 dependencies {
