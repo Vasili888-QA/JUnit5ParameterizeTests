@@ -1,6 +1,6 @@
 plugins {
     id 'java-library'
-    id 'io.qameta.allure' version '2.8.1'
+    id 'io.qameta.allure' version '2.9.6'
 }
 
 repositories {
@@ -8,17 +8,18 @@ repositories {
     //maven {url = "https://dl.bintray.com/qameta/maven-unstable/"}
 }
 
-def allureVersion = '2.15.0',
+def allureVersion = '2.17.2',
     selenideVersion = '5.24.4',
     junitVersion = "5.8.1"
 
 allure {
-    version = allureVersion
-    autoconfigure = true
-    aspectjweaver = true
-    configuration = "testImplementation"
-    useJUnit5 {
-        version = allureVersion
+    version.set("2.17.2")
+    adapter {
+        frameworks {
+            junit5 {
+                enabled.set(false)
+            }
+        }
     }
 }
 
